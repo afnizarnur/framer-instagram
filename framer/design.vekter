@@ -68,7 +68,7 @@
                 "aspectRatioLocked" : false,
                 "widthFactor" : null,
                 "opacity" : 1,
-                "clip" : false,
+                "clip" : true,
                 "borderColor" : "#222",
                 "left" : 0,
                 "locked" : false,
@@ -319,7 +319,52 @@
                     "fillType" : "color",
                     "radiusBottomRight" : 0,
                     "children" : [
-
+                      {
+                        "__class" : "SVGNode",
+                        "fillType" : "color",
+                        "originalFilename" : "favorite",
+                        "centerAnchorX" : 0.5066666666666667,
+                        "parentid" : "M5ig4g\/w",
+                        "rotation" : 0,
+                        "locked" : false,
+                        "intrinsicWidth" : 24,
+                        "top" : null,
+                        "right" : 141,
+                        "intrinsicHeight" : 24,
+                        "name" : "heart",
+                        "shadows" : [
+                          {
+                            "y" : 2,
+                            "enabled" : true,
+                            "blur" : 5,
+                            "x" : 0,
+                            "__class" : "Shadow",
+                            "color" : "rgba(0, 0, 0, 0.04)"
+                          }
+                        ],
+                        "aspectRatioLocked" : true,
+                        "id" : "{&C:<o)z",
+                        "svg" : "<?xml version=\"1.0\"?><svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z\"><\/path><\/svg>",
+                        "constraintsLocked" : false,
+                        "left" : null,
+                        "bottom" : null,
+                        "height" : 88,
+                        "fillGradient" : {
+                          "end" : "rgba(0,0,0,0)",
+                          "alpha" : 1,
+                          "angle" : 0,
+                          "__class" : "LinearGradient",
+                          "start" : "black"
+                        },
+                        "width" : 88,
+                        "widthFactor" : null,
+                        "targetName" : "heart",
+                        "heightFactor" : null,
+                        "fillColor" : "rgb(255, 255, 255)",
+                        "opacity" : 1,
+                        "centerAnchorY" : 0.5017064846416383,
+                        "visible" : true
+                      }
                     ],
                     "fillEnabled" : true,
                     "parentid" : "]EoU)VZd",
@@ -335,7 +380,7 @@
                     "constraintsLocked" : false,
                     "right" : 0,
                     "radiusPerCorner" : false,
-                    "centerAnchorY" : 0.4277777777777778,
+                    "centerAnchorY" : 0.4316143497757848,
                     "visible" : true,
                     "borderLeft" : 1,
                     "heightFactor" : null,
@@ -423,8 +468,8 @@
                     ],
                     "id" : ")(AKYle)",
                     "x" : 69,
-                    "constraintsLocked" : false,
-                    "left" : 13,
+                    "constraintsLocked" : true,
+                    "left" : null,
                     "bottom" : 40,
                     "height" : 15,
                     "opacity" : 1,
@@ -434,7 +479,7 @@
                     "heightFactor" : null,
                     "editable" : false,
                     "visible" : true,
-                    "centerAnchorY" : 0.8944444444444445,
+                    "centerAnchorY" : 0.8934977578475336,
                     "autoSize" : true,
                     "y" : 37
                   },
@@ -450,7 +495,7 @@
                     "top" : null,
                     "right" : null,
                     "intrinsicHeight" : 24,
-                    "name" : null,
+                    "name" : "heart_active",
                     "shadows" : [
                       {
                         "y" : 2,
@@ -496,7 +541,7 @@
                     "top" : null,
                     "right" : null,
                     "intrinsicHeight" : 24,
-                    "name" : null,
+                    "name" : "heart_default",
                     "shadows" : [
                       {
                         "y" : 2,
@@ -510,9 +555,9 @@
                     "aspectRatioLocked" : true,
                     "id" : "~4-RE9wO",
                     "svg" : "<?xml version=\"1.0\"?><svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z\"><\/path><\/svg>",
-                    "constraintsLocked" : false,
+                    "constraintsLocked" : true,
                     "left" : 14,
-                    "bottom" : 71,
+                    "bottom" : 72,
                     "height" : 24,
                     "fillGradient" : {
                       "end" : "rgba(0,0,0,0)",
@@ -527,7 +572,7 @@
                     "heightFactor" : null,
                     "fillColor" : "black",
                     "opacity" : 1,
-                    "centerAnchorY" : 0.8139013452914798,
+                    "centerAnchorY" : 0.8116591928251121,
                     "visible" : true
                   },
                   {
@@ -556,7 +601,7 @@
                     "aspectRatioLocked" : true,
                     "id" : "#(^\/fk=|",
                     "svg" : "<?xml version=\"1.0\"?><svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-message-circle\"><path d=\"M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z\"><\/path><\/svg>",
-                    "constraintsLocked" : false,
+                    "constraintsLocked" : true,
                     "left" : 52,
                     "bottom" : 72,
                     "height" : 24,
@@ -602,7 +647,7 @@
                     "aspectRatioLocked" : true,
                     "id" : "{?j[xIQM",
                     "svg" : "<?xml version=\"1.0\"?><svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-navigation\"><polygon points=\"3 11 22 2 13 21 11 13 3 11\"><\/polygon><\/svg>",
-                    "constraintsLocked" : false,
+                    "constraintsLocked" : true,
                     "left" : 86,
                     "bottom" : 72,
                     "height" : 24,
@@ -632,7 +677,7 @@
                     "locked" : false,
                     "intrinsicWidth" : 24,
                     "top" : null,
-                    "right" : 15,
+                    "right" : null,
                     "intrinsicHeight" : 24,
                     "name" : null,
                     "shadows" : [
@@ -648,8 +693,8 @@
                     "aspectRatioLocked" : true,
                     "id" : "u'r4UtGq",
                     "svg" : "<?xml version=\"1.0\"?><svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-bookmark\"><path d=\"M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z\"><\/path><\/svg>",
-                    "constraintsLocked" : false,
-                    "left" : null,
+                    "constraintsLocked" : true,
+                    "left" : 336,
                     "bottom" : 72,
                     "height" : 24,
                     "fillGradient" : {
@@ -742,8 +787,8 @@
                     ],
                     "id" : "d8fao;k'",
                     "x" : 15,
-                    "constraintsLocked" : false,
-                    "left" : 14,
+                    "constraintsLocked" : true,
+                    "left" : null,
                     "bottom" : 20,
                     "height" : 10,
                     "opacity" : 1,
@@ -753,7 +798,7 @@
                     "heightFactor" : null,
                     "editable" : false,
                     "visible" : true,
-                    "centerAnchorY" : 0.9444444444444444,
+                    "centerAnchorY" : 0.9439461883408071,
                     "autoSize" : true,
                     "y" : 441
                   },
@@ -831,8 +876,8 @@
                     ],
                     "id" : "Bo(=K\/e4",
                     "x" : 15,
-                    "constraintsLocked" : false,
-                    "left" : 86,
+                    "constraintsLocked" : true,
+                    "left" : null,
                     "bottom" : 20,
                     "height" : 10,
                     "opacity" : 1,
@@ -842,7 +887,7 @@
                     "heightFactor" : null,
                     "editable" : false,
                     "visible" : true,
-                    "centerAnchorY" : 0.9444444444444444,
+                    "centerAnchorY" : 0.9439461883408071,
                     "autoSize" : true,
                     "y" : 441
                   }
