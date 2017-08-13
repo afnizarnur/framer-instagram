@@ -17,14 +17,17 @@ setTime = () ->
 		
 setTime()
 
-# Creating flow for making header and footer stick on top and bottom
-flow = new FlowComponent
-	backgroundColor: "#F5F5F5"
+# Set up ScrollComponent
+scroll = new ScrollComponent
+	y: header.height
+	parent: home
+	scrollHorizontal: false
+	width: Screen.width
+	height: Screen.height - header.height
 
-# Initialize screen
-flow.showNext(home)
+feed_wrapper.parent = scroll.content
 
-# Usernames Data
+# Real Data
 usernames = [
 	{ "data": "hermiston.brandi" },
 	{ "data": "elvera95" },
@@ -37,9 +40,58 @@ for username, i in usernames
 	feed_username.text = username.data
 	feed_caption.template = username.data
 	feed_time.textTransform = "uppercase"
-	
+	# Randomize the likes count
+	rand_number = Utils.round(Utils.randomNumber(0, 100))	
+	like_count.template = rand_number
 
-# Animate heart icon when tap the image
+# Heart States
+heart_default.states = 
+	default:
+		animationOptions:
+			time: 0.5
+			curve: Spring
+		scale: 1
+		opacity: 1
+	active:
+		animationOptions:
+			time: 0.5
+			curve: Spring
+		opacity: 0
+		scale: 0
+		
+heart_active.states =
+	default:
+		animationOptions:
+			time: 0.5
+			curve: Spring
+		scale: 0
+		opacity: 0
+	active:
+		animationOptions:
+			time: 0.5
+			curve: Spring
+		opacity: 1
+		scale: 1
+
+heart_default.onTap ->
+	heart_active.animate("active")
+	heart_default.animate("active")
+	
+	if heart_default.states.current.name is "active"
+		like_count.template = rand_number--
+	else
+		like_count.template = rand_number++
+		
+heart_active.onTap ->
+	heart_active.animate("default")
+	heart_default.animate("default")
+	
+	if heart_active.states.current.name is "default"
+		like_count.template = rand_number++
+	else
+		like_count.template = rand_number--
+
+# Animate heart icon when double tap the image
 heart.opacity = 0
 heart.scale = 0
 
@@ -52,7 +104,13 @@ feed_image.onDoubleTap (event, layer) ->
 			time: 0.5
 			curve: Spring
 	
-	# Using Utils.delay to wait first animation finish, after that hide the heart icon
+	if heart_active.states.current.name is "default"
+		like_count.template = rand_number--
+				
+	heart_active.animate("active")
+	heart_default.animate("active")
+		
+	# Using Utils.delay to wait first animation finish
 	Utils.delay 0.5, ->
 		heart.animate
 			opacity: 0
@@ -60,9 +118,5 @@ feed_image.onDoubleTap (event, layer) ->
 			options:
 				time: 1
 				curve: Spring
-
-
-
-
 
 
