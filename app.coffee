@@ -23,7 +23,7 @@ scroll = new ScrollComponent
 	parent: home
 	scrollHorizontal: false
 	width: Screen.width
-	height: Screen.height - header.height
+	height: Screen.height - header.height - tabBar.height
 
 feed_wrapper.parent = scroll.content
 
@@ -73,6 +73,13 @@ heart_active.states =
 		opacity: 1
 		scale: 1
 
+# Fix when first like count not active
+if heart_default.states.current.name is "default"
+	like_count.template = rand_number++
+else 
+	like_count.template = rand_number--
+
+# When default heart onTap
 heart_default.onTap ->
 	heart_active.animate("active")
 	heart_default.animate("active")
@@ -81,7 +88,8 @@ heart_default.onTap ->
 		like_count.template = rand_number--
 	else
 		like_count.template = rand_number++
-		
+
+# When active heart onTap	
 heart_active.onTap ->
 	heart_active.animate("default")
 	heart_default.animate("default")
