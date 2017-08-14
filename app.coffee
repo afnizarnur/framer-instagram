@@ -20,7 +20,7 @@ setTime()
 # Set up ScrollComponent
 scroll = new ScrollComponent
 	y: header.height
-	parent: home
+	parent: Home
 	scrollHorizontal: false
 	width: Screen.width
 	height: Screen.height - header.height - tabBar.height
@@ -28,23 +28,48 @@ scroll = new ScrollComponent
 feed_wrapper.parent = scroll.content
 
 # Real Data
-usernames = [
-	{ "data": "hermiston.brandi" },
-	{ "data": "elvera95" },
-	{ "data": "dominique.lind" },
-	{ "data": "elva.langosh" }
+user = [
+	{ 
+		"username": "steve_lianardo"
+		"avatar": ""
+		"picture": ""
+	},
+	{ 
+		"username": "rizaldygema"
+		"avatar": ""
+		"picture": ""
+	},
+	{ 
+		"username": "shylla"
+		"avatar": ""
+		"picture": ""
+	},
 ]
 
+# Randomize Function
+random_number = ->
+	Utils.round(Utils.randomNumber(0, 100))
+
 # Fill our story feed using usernames data 
-for username, i in usernames
-	feed_username.text = username.data
-	feed_caption.template = username.data
-	feed_time.textTransform = "uppercase"
-	# Randomize the likes count
-	rand_number = Utils.round(Utils.randomNumber(0, 100))	
-	like_count.template = rand_number
+for item, index in feed.children
+	like = item.children[12]
+	username = item.children[1]
+	caption = item.children[4]
+	image = item.children[3]
+# 	heart = item.children[3].children[0]
+# 	heart_active = item.children[5]
+# 	heart_default = item.children[6]
+	
+	username.text = user[index].username
+	caption.template = user[index].username
+	
+	rand_number = random_number()
+	like.template = rand_number
 
 # Heart States
+heart_active.opacity = 0
+heart_active.scale = 0
+
 heart_default.states = 
 	default:
 		animationOptions:
@@ -57,8 +82,7 @@ heart_default.states =
 			time: 0.5
 			curve: Spring
 		opacity: 0
-		scale: 0
-		
+		scale: 0	
 heart_active.states =
 	default:
 		animationOptions:
@@ -98,6 +122,7 @@ heart_active.onTap ->
 		like_count.template = rand_number++
 	else
 		like_count.template = rand_number--
+		
 
 # Animate heart icon when double tap the image
 heart.opacity = 0
@@ -126,5 +151,6 @@ feed_image.onDoubleTap (event, layer) ->
 			options:
 				time: 1
 				curve: Spring
+
 
 
