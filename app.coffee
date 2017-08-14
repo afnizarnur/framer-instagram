@@ -17,7 +17,7 @@ setTime = () ->
 		
 setTime()
 
-# Set up ScrollComponent
+# Set up ScrollComponent the feed
 scroll = new ScrollComponent
 	y: header.height
 	parent: Home
@@ -26,6 +26,17 @@ scroll = new ScrollComponent
 	height: Screen.height - header.height - tabBar.height
 
 feed_wrapper.parent = scroll.content
+
+# Set up ScrollComponent for people story
+story_scroll = new ScrollComponent
+	parent: stories_wrap
+	scrollVertical: false
+	width: Screen.width
+	height: people_story.height + 25
+	y: 30
+	
+people_story.parent = story_scroll.content
+
 
 # Real Data
 user = [
@@ -127,27 +138,27 @@ for item, index in feed.children
 # 					curve: Spring
 
 # Fix when first like count not active
-if heart_default.states.current.name is "default"
-	like_count.template = rand_number++
-else 
-	like_count.template = rand_number--
+# if heart_default.states.current.name is "default"
+# 	like_count.template = rand_number++
+# else 
+# 	like_count.template = rand_number--
 
 # When default heart onTap
-heart_default.onTap ->
-	heart_active.animate("active")
-	heart_default.animate("active")
-	
-	if heart_default.states.current.name is "active"
-		like_count.template = rand_number--
-	else
-		like_count.template = rand_number++
+# heart_default.onTap ->
+# 	heart_active.animate("active")
+# 	heart_default.animate("active")
+# 	
+# 	if heart_default.states.current.name is "active"
+# 		like_count.template = rand_number--
+# 	else
+# 		like_count.template = rand_number++
 
 # When active heart onTap	
-heart_active.onTap ->
-	heart_active.animate("default")
-	heart_default.animate("default")
-	
-	if heart_active.states.current.name is "default"
-		like_count.template = rand_number++
-	else
-		like_count.template = rand_number--
+# heart_active.onTap ->
+# 	heart_active.animate("default")
+# 	heart_default.animate("default")
+# 	
+# 	if heart_active.states.current.name is "default"
+# 		like_count.template = rand_number++
+# 	else
+# 		like_count.template = rand_number--
