@@ -31,18 +31,18 @@ feed_wrapper.parent = scroll.content
 user = [
 	{ 
 		"username": "steve_lianardo"
-		"avatar": ""
-		"picture": ""
+		"avatar": "https://instagram.fcgk10-1.fna.fbcdn.net/t51.2885-19/s320x320/12950243_641406459330614_1802934396_a.jpg"
+		"picture": "https://instagram.fcgk10-1.fna.fbcdn.net/t51.2885-15/e35/15306537_1088591907930253_2208198207639388160_n.jpg"
 	},
 	{ 
 		"username": "rizaldygema"
-		"avatar": ""
-		"picture": ""
+		"avatar": "https://instagram.fcgk10-1.fna.fbcdn.net/t51.2885-19/10643957_469931539816728_944957932_a.jpg"
+		"picture": "https://instagram.fcgk10-1.fna.fbcdn.net/t51.2885-15/e35/14482780_1652664471698734_5484316174885847040_n.jpg"
 	},
 	{ 
-		"username": "shylla"
-		"avatar": ""
-		"picture": ""
+		"username": "shylla___"
+		"avatar": "https://instagram.fcgk10-1.fna.fbcdn.net/t51.2885-19/s320x320/19623173_1400899839945671_1936471982056931328_a.jpg"
+		"picture": "http://lorempixel.com/output/nature-q-c-640-480-5.jpg"
 	},
 ]
 
@@ -56,12 +56,16 @@ for item, index in feed.children
 	username = item.children[1]
 	caption = item.children[4]
 	image = item.children[3]
+	avatar = item.children[0]
+	
 # 	heart = item.children[3].children[0]
 # 	heart_active = item.children[5]
 # 	heart_default = item.children[6]
 	
 	username.text = user[index].username
 	caption.template = user[index].username
+	avatar.image = user[index].avatar
+	image.image = user[index].picture
 	
 	rand_number = random_number()
 	like.template = rand_number
@@ -151,6 +155,3 @@ feed_image.onDoubleTap (event, layer) ->
 			options:
 				time: 1
 				curve: Spring
-
-
-

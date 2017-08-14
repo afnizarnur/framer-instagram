@@ -17,7 +17,8 @@
   "showBezel" : false,
   "foldedCodeRanges" : [
     "{0, 271}",
-    "{498, 222}"
+    "{272, 225}",
+    "{498, 803}"
   ],
   "deviceScale" : "fit"
 }
