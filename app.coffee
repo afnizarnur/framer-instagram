@@ -65,35 +65,35 @@ random_number = ->
 	Utils.round(Utils.randomNumber(0, 100))
 
 # Heart States
-heart_active.opacity = 0
-heart_active.scale = 0
-
-heart_default.states = 
-	default:
-		animationOptions:
-			time: 0.5
-			curve: Spring
-		scale: 1
-		opacity: 1
-	active:
-		animationOptions:
-			time: 0.5
-			curve: Spring
-		opacity: 0
-		scale: 0	
-heart_active.states =
-	default:
-		animationOptions:
-			time: 0.5
-			curve: Spring
-		scale: 0
-		opacity: 0
-	active:
-		animationOptions:
-			time: 0.5
-			curve: Spring
-		opacity: 1
-		scale: 1
+# heart_active.opacity = 0
+# heart_active.scale = 0
+# 
+# heart_default.states = 
+# 	default:
+# 		animationOptions:
+# 			time: 0.5
+# 			curve: Spring
+# 		scale: 1
+# 		opacity: 1
+# 	active:
+# 		animationOptions:
+# 			time: 0.5
+# 			curve: Spring
+# 		opacity: 0
+# 		scale: 0	
+# heart_active.states =
+# 	default:
+# 		animationOptions:
+# 			time: 0.5
+# 			curve: Spring
+# 		scale: 0
+# 		opacity: 0
+# 	active:
+# 		animationOptions:
+# 			time: 0.5
+# 			curve: Spring
+# 		opacity: 1
+# 		scale: 1
 
 # Fill our story feed using usernames data 
 for item, index in feed.children
@@ -103,6 +103,8 @@ for item, index in feed.children
 	image = item.children[3]
 	avatar = item.children[0]
 	heart = item.children[3].children[0]
+	heart_filled1 = item.children[5]
+	heart_thin2 = item.children[6]
 	
 	username.text = user[index].username
 	caption.template = 
@@ -119,30 +121,49 @@ for item, index in feed.children
 	heart.scale = 0
 	
 	# Fix when first like count not active
-	if heart_default.states.current.name is "default"
-		like_count.template = rand_number++
-	else 
-		like_count.template = rand_number--
+# 	if heart_default.states.current.name is "default"
+# 		like_count.template = rand_number++
+# 	else 
+# 		like_count.template = rand_number--
+
+# 	print heart_filled1
 	
 	# When default heart onTap
-	heart_default.onTap ->
-		heart_active.animate("active")
-		heart_default.animate("active")
+	heart_filled1.onTap ->
 		
-		if heart_default.states.current.name is "active"
-			like_count.template = rand_number--
-		else
-			like_count.template = rand_number++
+# 		this.opacity = 0
+# 		this.scale = 0
+
+
+		
+		heart_filled1.animate
+			opacity: 1
+			scale: 1
+			options: 
+				time: 0.5
+				curve: Spring
+
+		heart_thin2.animate
+			opacity: 0
+			scale: 0
+			options: 
+				time: 0.5
+				curve: Spring
+		
+# 		if heart_default.states.current.name is "active"
+# 			like_count.template = rand_number--
+# 		else
+# 			like_count.template = rand_number++
 	
 	# When active heart onTap	
-	heart_active.onTap ->
-		heart_active.animate("default")
-		heart_default.animate("default")
-		
-		if heart_active.states.current.name is "default"
-			like_count.template = rand_number++
-		else
-			like_count.template = rand_number--
+# 	heart_active.onTap ->
+# 		heart_active.animate("default")
+# 		heart_default.animate("default")
+# 		
+# 		if heart_active.states.current.name is "default"
+# 			like_count.template = rand_number++
+# 		else
+# 			like_count.template = rand_number--
 
 	image.onDoubleTap (event, layer) ->
 		heart_filled = this.parent.children[5]
@@ -150,35 +171,6 @@ for item, index in feed.children
 		heart_filled.opacity = 0
 		heart_filled.scale = 0
 		
-		# Heart States
-		heart_thin.states = 
-			default:
-				animationOptions:
-					time: 0.5
-					curve: Spring
-				scale: 1
-				opacity: 1
-			active:
-				animationOptions:
-					time: 0.5
-					curve: Spring
-				opacity: 0
-				scale: 0	
-		heart_filled.states =
-			default:
-				animationOptions:
-					time: 0.5
-					curve: Spring
-				scale: 0
-				opacity: 0
-			active:
-				animationOptions:
-					time: 0.5
-					curve: Spring
-				opacity: 1
-				scale: 1
-				
-		heart_filled.animate("active")
 		
 		heart_filled.animate
 			opacity: 1
@@ -187,14 +179,39 @@ for item, index in feed.children
 				time: 0.5
 				curve: Spring
 		
-		# Show the heart icon
-		this.children[0].animate
+		heart_thin.animate
+			opacity: 0
+			scale: 0
+			options: 
+				time: 0.5
+				curve: Spring
+				
+		showHeart = new Animation this.children[0],
 			opacity: 1
 			scale: 1
 			options:
 				time: 0.5
 				curve: Spring
-# 		
+				
+		hideHeart = new Animation this.children[0],
+			opacity: 0
+			scale: 0
+			options:
+				time: 0.5
+				curve: Spring
+				
+		showHeart.start()
+		this.children[0].onAnimationEnd ->
+			hideHeart.start()
+		
+		# Show the heart icon
+# 		this.children[0].animate
+# 			opacity: 1
+# 			scale: 1
+# 			options:
+# 				time: 0.5
+# 				curve: Spring
+# 	
 # 		Utils.delay 0.5, ->
 # 			this.children[0].animate
 # 				opacity: 0
