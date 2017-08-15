@@ -113,8 +113,9 @@ for item, index in feed.children
 	avatar.image = user[index].avatar
 	image.image = user[index].picture
 	
-	rand_number = random_number()
-	like.template = rand_number
+	rand_number = [] 
+	rand_number[index] = random_number()
+	like.template = rand_number[index]
 	
 	# Animate heart icon when double tap the image
 	heart.opacity = 0
@@ -142,10 +143,10 @@ for item, index in feed.children
 				time: 0.5
 				curve: Spring
 		
-# 		if heart_default.states.current.name is "active"
-# 			like_count.template = rand_number--
-# 		else
-# 			like_count.template = rand_number++
+		if heart_default.states.current.name is "active"
+			like_count.template = rand_number[index]--
+		else
+			like_count.template = rand_number[index]++
 	
 	# When active heart onTap	
 	heart_filled1.onTap ->
@@ -163,17 +164,16 @@ for item, index in feed.children
 				time: 0.5
 				curve: Spring
 		
-# 		if heart_active.states.current.name is "default"
-# 			like_count.template = rand_number++
-# 		else
-# 			like_count.template = rand_number--
+		if heart_active.states.current.name is "default"
+			like_count.template = rand_number[index]++
+		else
+			like_count.template = rand_number[index]--
 
 	image.onDoubleTap (event, layer) ->
 		heart_filled = this.parent.children[5]
 		heart_thin = this.parent.children[6]
 		heart_filled.opacity = 0
 		heart_filled.scale = 0
-		
 		
 		heart_filled.animate
 			opacity: 1
