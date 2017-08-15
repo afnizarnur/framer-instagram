@@ -113,19 +113,17 @@ for item, index in feed.children
 	avatar.image = user[index].avatar
 	image.image = user[index].picture
 	
-	rand_number = [] 
-	rand_number[index] = random_number()
-	like.template = rand_number[index]
+	like.template = random_number()
 	
 	# Animate heart icon when double tap the image
 	heart.opacity = 0
 	heart.scale = 0
 	
 	# Fix when first like count not active
-# 	if heart_default.states.current.name is "default"
-# 		like_count.template = rand_number++
-# 	else 
-# 		like_count.template = rand_number--
+	if heart_filled1.opacity is 0
+		like.template = like.template.likes+1
+	else
+		like.template = like.template.likes-1
 	
 	# When default heart onTap
 	heart_thin1.onTap ->
@@ -142,11 +140,11 @@ for item, index in feed.children
 			options: 
 				time: 0.5
 				curve: Spring
-		
-		if heart_default.states.current.name is "active"
-			like_count.template = rand_number[index]--
+				
+		if this.parent.children[5].opacity is 0
+			this.parent.children[12].template = this.parent.children[12].template.likes+1
 		else
-			like_count.template = rand_number[index]++
+			this.parent.children[12].template = this.parent.children[12].template.likes-1
 	
 	# When active heart onTap	
 	heart_filled1.onTap ->
@@ -164,16 +162,19 @@ for item, index in feed.children
 				time: 0.5
 				curve: Spring
 		
-		if heart_active.states.current.name is "default"
-			like_count.template = rand_number[index]++
+		if this.parent.children[6].opacity is 0
+			this.parent.children[12].template = this.parent.children[12].template.likes-1
 		else
-			like_count.template = rand_number[index]--
+			this.parent.children[12].template = this.parent.children[12].template.likes+1
 
 	image.onDoubleTap (event, layer) ->
 		heart_filled = this.parent.children[5]
 		heart_thin = this.parent.children[6]
 		heart_filled.opacity = 0
 		heart_filled.scale = 0
+		
+		if this.parent.children[6].opacity isnt 0
+			this.parent.children[12].template = this.parent.children[12].template.likes+1
 		
 		heart_filled.animate
 			opacity: 1
