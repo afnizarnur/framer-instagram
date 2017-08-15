@@ -103,8 +103,6 @@ for item, index in feed.children
 	image = item.children[3]
 	avatar = item.children[0]
 	heart = item.children[3].children[0]
-# 	heart_filled = item.children[5]
-# 	heart_thin = item.children[6]
 	
 	username.text = user[index].username
 	caption.template = 
@@ -120,7 +118,69 @@ for item, index in feed.children
 	heart.opacity = 0
 	heart.scale = 0
 	
+	# Fix when first like count not active
+	if heart_default.states.current.name is "default"
+		like_count.template = rand_number++
+	else 
+		like_count.template = rand_number--
+	
+	# When default heart onTap
+	heart_default.onTap ->
+		heart_active.animate("active")
+		heart_default.animate("active")
+		
+		if heart_default.states.current.name is "active"
+			like_count.template = rand_number--
+		else
+			like_count.template = rand_number++
+	
+	# When active heart onTap	
+	heart_active.onTap ->
+		heart_active.animate("default")
+		heart_default.animate("default")
+		
+		if heart_active.states.current.name is "default"
+			like_count.template = rand_number++
+		else
+			like_count.template = rand_number--
+
 	image.onDoubleTap (event, layer) ->
+		heart_filled = this.parent.children[5]
+		heart_thin = this.parent.children[6]
+		heart_filled.opacity = 0
+		heart_filled.scale = 0
+		
+		# Heart States
+		heart_thin.states = 
+			default:
+				animationOptions:
+					time: 0.5
+					curve: Spring
+				scale: 1
+				opacity: 1
+			active:
+				animationOptions:
+					time: 0.5
+					curve: Spring
+				opacity: 0
+				scale: 0	
+		heart_filled.states =
+			default:
+				animationOptions:
+					time: 0.5
+					curve: Spring
+				scale: 0
+				opacity: 0
+			active:
+				animationOptions:
+					time: 0.5
+					curve: Spring
+				opacity: 1
+				scale: 1
+				
+		heart_filled.animate("active")
+		heart_thin.animate("active")
+		
 		# Show the heart icon
 		this.children[0].animate
 			opacity: 1
@@ -128,7 +188,7 @@ for item, index in feed.children
 			options:
 				time: 0.5
 				curve: Spring
-
+# 		
 # 		Utils.delay 0.5, ->
 # 			this.children[0].animate
 # 				opacity: 0
@@ -137,28 +197,3 @@ for item, index in feed.children
 # 					time: 1
 # 					curve: Spring
 
-# Fix when first like count not active
-# if heart_default.states.current.name is "default"
-# 	like_count.template = rand_number++
-# else 
-# 	like_count.template = rand_number--
-
-# When default heart onTap
-# heart_default.onTap ->
-# 	heart_active.animate("active")
-# 	heart_default.animate("active")
-# 	
-# 	if heart_default.states.current.name is "active"
-# 		like_count.template = rand_number--
-# 	else
-# 		like_count.template = rand_number++
-
-# When active heart onTap	
-# heart_active.onTap ->
-# 	heart_active.animate("default")
-# 	heart_default.animate("default")
-# 	
-# 	if heart_active.states.current.name is "default"
-# 		like_count.template = rand_number++
-# 	else
-# 		like_count.template = rand_number--
