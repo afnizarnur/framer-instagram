@@ -95,7 +95,7 @@ random_number = ->
 # 		opacity: 1
 # 		scale: 1
 
-# Fill our story feed using usernames data 
+# Loop post for the feed and all interaction
 for item, index in feed.children
 	like = item.children[12]
 	username = item.children[1]
@@ -105,50 +105,27 @@ for item, index in feed.children
 	heart = item.children[3].children[0]
 	heart_filled1 = item.children[5]
 	heart_thin1 = item.children[6]
-	
 	username.text = user[index].username
 	caption.template = 
 		username: user[index].username
 		caption: user[index].caption
 	avatar.image = user[index].avatar
 	image.image = user[index].picture
-	
 	like.template = random_number()
 	
-	# Animate heart icon when double tap the image
+	# Hide heart icon
 	heart.opacity = 0
 	heart.scale = 0
 	
-	# Fix when first like count not active
-	if heart_filled1.opacity is 0
-		like.template = like.template.likes+1
-	else
-		like.template = like.template.likes-1
-	
 	# When default heart onTap
-	heart_thin1.onTap ->
-		this.parent.children[5].animate
-			opacity: 1
-			scale: 1
-			options: 
-				time: 0.5
-				curve: Spring
-
-		this.animate
-			opacity: 0
-			scale: 0
-			options: 
-				time: 0.5
-				curve: Spring
-				
-		if this.parent.children[5].opacity is 0
-			this.parent.children[12].template = this.parent.children[12].template.likes+1
-		else
-			this.parent.children[12].template = this.parent.children[12].template.likes-1
+	heart_filled1.opacity = 0
+	heart_filled1.scale = 0
 	
-	# When active heart onTap	
-	heart_filled1.onTap ->
-		this.parent.children[6].animate
+	heart_thin1.onTap ->
+		heart_filled = this.parent.children[5]
+		like_count = this.parent.children[12]
+		
+		heart_filled.animate
 			opacity: 1
 			scale: 1
 			options: 
@@ -162,19 +139,50 @@ for item, index in feed.children
 				time: 0.5
 				curve: Spring
 		
-		if this.parent.children[6].opacity is 0
-			this.parent.children[12].template = this.parent.children[12].template.likes-1
+		if heart_filled.opacity is 0
+			like_count.template = 
+				like_count.template.likes + 1
 		else
-			this.parent.children[12].template = this.parent.children[12].template.likes+1
-
-	image.onDoubleTap (event, layer) ->
-		heart_filled = this.parent.children[5]
+			like_count.template = 
+				like_count.template.likes - 1
+	
+	# When active heart onTap
+	heart_filled1.onTap ->
 		heart_thin = this.parent.children[6]
-		heart_filled.opacity = 0
-		heart_filled.scale = 0
+		like_count = this.parent.children[12]
 		
-		if this.parent.children[6].opacity isnt 0
-			this.parent.children[12].template = this.parent.children[12].template.likes+1
+		heart_thin.animate
+			opacity: 1
+			scale: 1
+			options: 
+				time: 0.5
+				curve: Spring
+		
+		this.animate
+			opacity: 0
+			scale: 0
+			options: 
+				time: 0.5
+				curve: Spring
+		
+		if heart_thin.opacity is 0
+			like_count.template = 
+				like_count.template.likes - 1
+		else
+			like_count.template = 
+				like_count.template.likes + 1
+
+	# Animate heart icon when double tap the image
+	image.onDoubleTap (event, layer) ->
+		heart_filled2 = this.parent.children[5]
+		heart_thin2 = this.parent.children[6]
+		like_count = this.parent.children[12]
+		heart_filled2.opacity = 0
+		heart_filled2.scale = 0
+		
+		if heart_thin2 .opacity isnt 0
+			like_count.template = 
+				like_count.template.likes+1
 
 		this.children[0].animate
 			opacity: 1
@@ -191,17 +199,16 @@ for item, index in feed.children
 					time: 1
 					curve: Spring
 		
-		heart_filled.animate
+		heart_filled2.animate
 			opacity: 1
 			scale: 1
 			options: 
 				time: 0.5
 				curve: Spring
 		
-		heart_thin.animate
+		heart_thin2.animate
 			opacity: 0
 			scale: 0
 			options: 
 				time: 0.5
 				curve: Spring
-		
