@@ -175,6 +175,21 @@ for item, index in feed.children
 		
 		if this.parent.children[6].opacity isnt 0
 			this.parent.children[12].template = this.parent.children[12].template.likes+1
+
+		this.children[0].animate
+			opacity: 1
+			scale: 1
+			options:
+				time: 0.5
+				curve: Spring
+		
+		Utils.delay 0.5, =>
+			this.children[0].animate
+				opacity: 0
+				scale: 0
+				options:
+					time: 1
+					curve: Spring
 		
 		heart_filled.animate
 			opacity: 1
@@ -189,21 +204,4 @@ for item, index in feed.children
 			options: 
 				time: 0.5
 				curve: Spring
-				
-		showHeart = new Animation this.children[0],
-			opacity: 1
-			scale: 1
-			options:
-				time: 0.5
-				curve: Spring
-				
-		hideHeart = new Animation this.children[0],
-			opacity: 0
-			scale: 0
-			options:
-				time: 0.5
-				curve: Spring
-				
-		showHeart.start()
-		this.children[0].onAnimationEnd ->
-			hideHeart.start()
+		
