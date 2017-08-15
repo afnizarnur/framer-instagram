@@ -179,7 +179,13 @@ for item, index in feed.children
 				scale: 1
 				
 		heart_filled.animate("active")
-		heart_thin.animate("active")
+		
+		heart_filled.animate
+			opacity: 1
+			scale: 1
+			options: 
+				time: 0.5
+				curve: Spring
 		
 		# Show the heart icon
 		this.children[0].animate
