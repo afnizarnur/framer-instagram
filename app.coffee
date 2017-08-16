@@ -113,13 +113,22 @@ for item, index in feed.children
 	image.image = user[index].picture
 	like.template = random_number()
 	
+	heart_filled1.opacity = 1
+	heart_filled1.scale = 1
+	
+	heart_filled1.fill = "blue"
+	heart_filled1.stroke = "black"
+# 	heart_filled1.strokeWidth = 10
+	
+	heart_thin1.opacity = 0
+	
 	# Hide heart icon
 	heart.opacity = 0
 	heart.scale = 0
 	
 	# When default heart onTap
-	heart_filled1.opacity = 0
-	heart_filled1.scale = 0
+# 	heart_filled1.opacity = 0
+# 	heart_filled1.scale = 0
 	
 	heart_thin1.onTap ->
 		heart_filled = this.parent.children[5]
@@ -212,3 +221,4 @@ for item, index in feed.children
 			options: 
 				time: 0.5
 				curve: Spring
+
