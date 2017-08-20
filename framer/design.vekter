@@ -4587,7 +4587,7 @@
                         "targetName" : null,
                         "heightFactor" : null,
                         "fillColor" : "rgb(238, 68, 68)",
-                        "opacity" : 1,
+                        "opacity" : 0,
                         "centerAnchorY" : 0.8044444444444444,
                         "visible" : true
                       },
@@ -5544,7 +5544,7 @@
                         "targetName" : null,
                         "heightFactor" : null,
                         "fillColor" : "rgb(238, 68, 68)",
-                        "opacity" : 1,
+                        "opacity" : 0,
                         "centerAnchorY" : 0.8044444444444444,
                         "visible" : true
                       },
