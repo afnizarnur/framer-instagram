@@ -64,37 +64,6 @@ user = [
 random_number = ->
 	Utils.round(Utils.randomNumber(0, 100))
 
-# Heart States
-# heart_active.opacity = 0
-# heart_active.scale = 0
-# 
-# heart_default.states = 
-# 	default:
-# 		animationOptions:
-# 			time: 0.5
-# 			curve: Spring
-# 		scale: 1
-# 		opacity: 1
-# 	active:
-# 		animationOptions:
-# 			time: 0.5
-# 			curve: Spring
-# 		opacity: 0
-# 		scale: 0	
-# heart_active.states =
-# 	default:
-# 		animationOptions:
-# 			time: 0.5
-# 			curve: Spring
-# 		scale: 0
-# 		opacity: 0
-# 	active:
-# 		animationOptions:
-# 			time: 0.5
-# 			curve: Spring
-# 		opacity: 1
-# 		scale: 1
-
 # Loop post for the feed and all interaction
 for item, index in feed.children
 	like = item.children[12]
