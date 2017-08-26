@@ -1,3 +1,5 @@
+Framer.Device.background.backgroundColor = "#ccc"
+
 # Statusbar time
 setTime = () ->
 	date = new Date
